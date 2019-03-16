@@ -1,0 +1,22 @@
+.containers{
+    background-image: url("../images/stage.jpg");
+    margin-top: 70px;
+    height: 500px;
+    background-size: cover;
+    background-position: top;
+    background-repeat: no-repeat;
+    background-position: center;
+    text-align: center;
+    padding: 10px;
+
+  }
+  
+  .containers #inside{
+    color: white;
+    padding: 210px;
+    font-size: 47px;
+    font-family: serif;
+  }
+  #butt{
+    margin:70px;
+  }
