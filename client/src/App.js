@@ -1,18 +1,28 @@
 import React, { Component } from 'react';
-import { Route} from 'react-router-dom'
-import Router from './router'
-import './components/css/MDB-Free/css/mdb.min.css'
-import './components/css/MDB-Free/css/bootstrap.min.css'
-import './components/css/main.css'
-import Header from './components/layout/header'
-//import './components/css/font-awesome-4.7.0/css/font-awesome.min.css'
+import './App.css'
+import Sidebar from './components/sidebar'
+import Introduction from './components/introduction'
+import About from './components/about'
+import Timeline from './components/timeline'
+import Education from './components/education'
+import RecentWork from './components/recentWorks'
+import Contact from './components/contact'
 
 class App extends Component {
   render() {
     return (
-      <div >
-        <Route component={Header}/>
-        <Route component={Router}/>
+      <div id="colorlib-page">
+        <div id="container-wrap">
+         	<Sidebar></Sidebar>
+				<div id="colorlib-main">
+					<Introduction></Introduction>
+					<About></About>
+					<Timeline></Timeline>
+          <Education/>
+          <RecentWork/>
+          <Contact/>
+          	</div>
+      	</div>
       </div>
     );
   }
