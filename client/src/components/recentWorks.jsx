@@ -1,6 +1,25 @@
 import React, { Component } from 'react'
-
+import { Link } from 'react-router-dom'
+import { getAllWork } from './api/api'
 export default class recentWorks extends Component {
+	constructor(){
+		super();
+		this.state = {
+			token:false,
+			project:[],
+			image:'https://res.cloudinary.com/oluwapelumi/image/upload/v1567909672/iw3esqva4hltyzuxku6n.jpg'
+		}
+	}
+	async componentDidMount(){
+		const token = await window.localStorage.getItem('token')
+		
+		const project = await getAllWork()
+		//console.log(project)
+		this.setState({project:project.info})
+		if(token){
+			this.setState({token:true})
+		}
+	}
     render() {
         return (
             <div>
@@ -18,97 +37,26 @@ export default class recentWorks extends Component {
 						</div>
 					</div>
 					<div class="row">
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style={{backgroundImage: 'url(images/makeup1.jpg)'}}>
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 01</a></h3>
-										
-										{/* <p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p> */}
+					<div className="col-md-6 animate-box" data-animate-effect="fadeInLeft" >
+					{this.state.project ? this.state.project.map( (project, index) => {
+								return ( 
+								
+									
+								<div className="project" style={{backgroundImage: `url(${project.photo})`}} key={index}>
+									<div className="desc">
+										<div className="con">
+											<h3 className="card-text"><a href="work.html">{project.text}</a></h3>
+											{this.state.token ? <Link to={`/work/${project._id}`}> <button className="btn btn-primary">Edit</button></Link> : null}
+										</div>
 									</div>
 								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style={{backgroundImage: 'url(images/makeup2.jpg)'}}>
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 02</a></h3>
-										
-										{/* <p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p> */}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInTop">
-							<div class="project" style={{backgroundImage: 'url(images/margazine.jpg)'}}>
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 03</a></h3>
-										
-										{/* <p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p> */}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInBottom">
-							<div class="project" style={{backgroundImage: 'url(images/seyi4.jpg)'}}>
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 04</a></h3>
-										
-										{/* <p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p> */}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInLeft">
-							<div class="project" style={{backgroundImage: 'url(images/seyi5.jpg)'}}>
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 05</a></h3>
-										
-										{/* <p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p> */}
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-md-6 animate-box" data-animate-effect="fadeInRight">
-							<div class="project" style={{backgroundImage: 'url(images/about.jpg)'}}>
-								<div class="desc">
-									<div class="con">
-										<h3><a href="work.html">Work 06</a></h3>
-										
-										{/* <p class="icon">
-											<span><a href="#"><i class="icon-share3"></i></a></span>
-											<span><a href="#"><i class="icon-eye"></i> 100</a></span>
-											<span><a href="#"><i class="icon-heart"></i> 49</a></span>
-										</p> */}
-									</div>
-								</div>
-							</div>
-						</div>
+							// </div>
+							)}) : (
+								<h6>No post returned</h6>
+					)}
 					</div>
+					</div>
+					
 					{/* <div class="row">
 						<div class="col-md-12 animate-box">
 							<p><a href="#" class="btn btn-primary btn-lg btn-load-more">Load more <i class="icon-reload"></i></a></p>

@@ -1,6 +1,22 @@
 import React, { Component } from 'react'
 
 export default class Sidebar extends Component {
+  constructor(){
+		super();
+		this.state = {
+			token:false
+		}
+	}
+	async componentDidMount(){
+		const token = await window.localStorage.getItem('token')
+		if(token){
+			this.setState({token:true})
+		}
+  }
+  async handleLogOut(){
+    await window.localStorage.clear()
+    await window.location.reload(true);
+  }
   render() {
     return (
       <div>
@@ -28,6 +44,7 @@ export default class Sidebar extends Component {
                 <li><a href="https://www.facebook.com/oluwaseyifunmi.jimoh.7" target="_blank" rel="noopener noreferrer"><i className="icon-facebook2" /></a></li>
                 <li><a href="https://twitter.com/" target="_blank" rel="noopener noreferrer"><i className="icon-twitter2" /></a></li>
                 <li><a href="https://www.instagram.com/flawless empire1" target="_blank" rel="noopener noreferrer"><i className="icon-instagram" /></a></li>
+                {this.state.token ? <li><button onClick={this.handleLogOut.bind(this)} className="btn btn-danger">Logout</button></li> : null }
               </ul>
             </nav>
             

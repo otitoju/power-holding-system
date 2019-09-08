@@ -44,18 +44,15 @@ export default class contact extends Component {
 						<div class="col-md-7 col-md-push-1">
 							<div class="row">
 								<div class="col-md-10 col-md-offset-1 col-md-pull-1 animate-box" data-animate-effect="fadeInRight">
-									<form method="POST" action="https://formspree.io/oluwaseyijimoh7@gmail.com ">
+									<form method="POST" action="https://formspree.io/oluwaseyijimoh7@gmail.com">
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Name"/>
+											<input type="text" class="form-control" placeholder="Name" required/>
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Email"/>
+											<input type="text" class="form-control" placeholder="Email" required/>
 										</div>
 										<div class="form-group">
-											<input type="text" class="form-control" placeholder="Subject"/>
-										</div>
-										<div class="form-group">
-											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message"></textarea>
+											<textarea name="" id="message" cols="30" rows="7" class="form-control" placeholder="Message" required></textarea>
 										</div>
 										<div class="form-group">
 											<input type="submit" class="btn btn-primary btn-send-message" value="Send Message"/>
