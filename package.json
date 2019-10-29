@@ -22,7 +22,7 @@
     "dotenv": "^6.0.0",
     "express": "^4.16.3",
     "jsonwebtoken": "^8.3.0",
-    "mongoose": "^5.2.13",
+    "mongoose": "^5.7.5",
     "mongoose-mongodb-errors": "0.0.2",
     "node-mailer": "^0.1.1",
     "paypal": "^1.0.1",
